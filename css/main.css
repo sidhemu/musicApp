@@ -18,3 +18,8 @@ body {
 .searchInput .input-group {
   width: 100%;
 }
+
+
+.pager li {
+  cursor: pointer;
+}
