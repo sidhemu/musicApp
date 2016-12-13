@@ -1,0 +1,12 @@
+body {
+  padding-top: 50px;
+}
+
+.music-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.searchInput{
+  margin-bottom: 20px;
+}
