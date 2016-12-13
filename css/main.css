@@ -10,3 +10,7 @@ body {
 .searchInput{
   margin-bottom: 20px;
 }
+
+.searchInput .input-group {
+  width: 100%;
+}
