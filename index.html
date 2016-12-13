@@ -16,7 +16,7 @@
 
                             <div class="col-lg-6 col-md-offset-3 searchInput">
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search title">
+                                <input type="text" class="form-control" placeholder="Search title" ng-model="searchSong">
                                 <span class="input-group-btn">
                                   <button class="btn btn-default" type="button">Go!</button>
                                 </span>
@@ -25,7 +25,7 @@
 
                             <div class="col-lg-6 col-md-offset-3">
                               <ul class="list-group">
-                                  <li class="list-group-item" ng-repeat="song in details"><span class="badge">14</span>{{song.}}</li>
+                                  <li class="list-group-item" ng-repeat="song in details | filter:searchSong"><span class="badge">{{song.rating}}</span>{{song.title}} &nbsp;[<span ng-repeat="genre in songType">{{genre.name}}</span>]</li>
                               </ul>
                             </div>
 

@@ -9,7 +9,9 @@ app.controller('musicController', function($scope, $http) {
     function fetch() {
           $http.get($scope.search)
             .then(function(response) {
-              $scope.details = response.data;
+              $scope.details = response.data.results;
+              $scope.songType =  $scope.details.genres;
+              console.log($scope.details);
             });
 
         }
