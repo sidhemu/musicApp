@@ -4,7 +4,11 @@ body {
 
 .music-template {
   padding: 40px 15px;
+}
+
+.music-template  .header{
   text-align: center;
+  width: 100%;
 }
 
 .searchInput{

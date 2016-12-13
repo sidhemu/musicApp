@@ -5,13 +5,18 @@
     <title>Music App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/angular-datatables/dist/css/angular-datatables.css">
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+
   </head>
   <body ng-app="musicApp"  ng-controller="musicController">
     <div class="container">
         <div class="music-template">
+          <div class="header">
             <h1>Music Tracks</h1>
+          </div>
+
                     <div class="row">
 
                             <div class="col-lg-6 col-md-offset-3 searchInput">
@@ -22,7 +27,7 @@
 
                             <div class="col-lg-6 col-md-offset-3">
                               <ul class="list-group">
-                                  <li class="list-group-item" ng-repeat="song in details | filter:searchSong"><span class="badge">{{song.rating}}</span>{{song.title}} &nbsp;[<span ng-repeat="genre in songType">{{genre.name}}</span>]</li>
+                                  <li class="list-group-item" ng-repeat="song in details | filter:searchSong"><span class="badge">{{song.rating}}</span><strong>{{song.title}}</strong> &nbsp;[<span ng-repeat="genre in song.genres">{{genre.name}}{{$last ? '' : ($index==shifts.length-2) ? ' and ' : ' | '}}</span>]</li>
                               </ul>
                             </div>
 
@@ -33,9 +38,8 @@
                             <div class="col-lg-6 col-md-offset-3">
                               <nav aria-label="...">
                               <ul class="pager">
-                                <li><a href="#">Page 1</a></li>
-                                <li><a href="#">Page 2</a></li>
-                                <li><a href="#">Page 3</a></li>
+                                <li ng-if="page.previous"><a href="#">Previous</a></li>
+                                <li ng-if="page.next"><a href="#">Next</a></li>
                               </ul>
                               </nav>
                             </div>
@@ -47,5 +51,6 @@
   </body>
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="node_modules/angular-datatables/dist/angular-datatables.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </html>
