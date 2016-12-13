@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/angular-datatables/dist/css/angular-datatables.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="css/main.css">
-    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+
 
   </head>
   <body ng-app="musicApp"  ng-controller="musicController">
@@ -21,18 +22,18 @@
 
                             <div class="col-lg-6 col-md-offset-3 searchInput">
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search title" ng-model="searchSong">
+                                <input id="searchbox" type="text" class="form-control" placeholder="Search title" ng-model="searchSong">
                               </div>
                             </div>
 
                             <div class="col-lg-6 col-md-offset-3">
                               <ul class="list-group">
-                                  <li class="list-group-item" ng-repeat="song in details | filter:searchSong"><span class="badge">{{song.rating}}</span><strong>{{song.title}}</strong> &nbsp;[<span ng-repeat="genre in song.genres">{{genre.name}}{{$last ? '' : ($index==shifts.length-2) ? ' and ' : ' | '}}</span>]</li>
+                                  <li class="list-group-item" ng-repeat="song in details | filter:searchSong" ng-click="editTrack($event,song)"><span class="badge">{{song.rating}}</span><strong>{{song.title}}</strong> &nbsp;[<span ng-repeat="genre in song.genres">{{genre.name}}{{$last ? '' : ($index==shifts.length-2) ? ' and ' : ' | '}}</span>]</li>
                               </ul>
                             </div>
 
                             <div class="col-lg-6 col-md-offset-3">
-                                <button type="button" class="btn btn-default btn-lg btn-block">Add New Track</button>
+                                <button type="button" class="btn btn-default btn-lg btn-block" ng-click="addTrack($event)">Add New Track</button>
                             </div>
 
                             <div class="col-lg-6 col-md-offset-3">
@@ -49,7 +50,24 @@
     </div>
 
   </body>
+  <script id="panel.progress.dialog.html" type="text/ng-template">
+    <div class="row">
+       <div class="row">
+          <div class="input-group">
+            <input id="title" type="text" class="form-control" placeholder="title" ng-model="$root.song.title">
+            <input id="rating" type="text" class="form-control" placeholder="rating" ng-model="$root.song.rating">
+
+          </div>
+       </div>
+         <md-select  ng-model="$root.song.genres" multiple><md-option ng-repeat="genre in $root.genres" ng-value="genre.id">{{genre.name}}</md-option></md-select>
+       <button ng-click="$root.save_data()">save</button>
+    </div>
+  </script>
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+  <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
+  <script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script>
   <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="node_modules/angular-datatables/dist/angular-datatables.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
